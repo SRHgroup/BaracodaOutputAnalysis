@@ -4,9 +4,11 @@
 \alias{bar_plot_func}
 \title{Bar Plot Function}
 \usage{
-bar_plot_func(num)
+bar_plot_func(data, num)
 }
 \arguments{
+\item{data}{data to plot}
+
 \item{num}{Length of mut_peptide}
 }
 \description{

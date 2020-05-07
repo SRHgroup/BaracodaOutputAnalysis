@@ -1,11 +1,12 @@
 #' Bar Plot Function
 #'
 #' This function allows you to do a bar plot from specified peptide_position
+#' @param data data to plot
 #' @param num Length of mut_peptide
 #' @export
 
-bar_plot_func <- function(num) {
-  my_data_clean_aug %>%
+bar_plot_func <- function(data, num) {
+  data %>%
     filter(str_length(mut_peptide)==num,mutation_consequence=="M") %>%
     ggplot(aes(x=peptide_position)) +
     geom_bar(aes(fill = response), stat = "count")+

@@ -5,13 +5,24 @@
 \title{Sequence Logo Generator}
 \usage{
 seqloggo_generator(
-  data = x,
-  len = y,
+  data,
+  len,
   resp = c("yes", "no"),
   cons = c("F", "M", "I", "D"),
   mouse = c("CT26", "4T1")
 )
 }
+\arguments{
+\item{data}{data to use}
+
+\item{len}{length of mut_peptide}
+
+\item{resp}{response: "yes" or "no}
+
+\item{cons}{mutation consequence: "F", "M", "I", "D"}
+
+\item{mouse}{cell_line of mouse}
+}
 \description{
-This function takes in a dataset and len.
+This function generates a sequence of logo.
 }
