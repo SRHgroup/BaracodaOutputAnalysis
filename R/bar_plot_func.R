@@ -4,6 +4,7 @@
 #' @param data data to plot
 #' @param num Length of mut_peptide
 #' @export
+respond_cols <- c("#91bfdb","#ef8a62")
 
 bar_plot_func <- function(data, num) {
   data %>%
