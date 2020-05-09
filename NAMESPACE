@@ -5,4 +5,3 @@ export(hello)
 export(respond_cols)
 export(scatterplot_function)
 export(seqloggo_generator)
-
