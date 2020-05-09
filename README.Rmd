@@ -3,7 +3,7 @@ title: "barcc"
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from the README.Rmd file. Eidt that file for updates -->
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -34,9 +34,9 @@ library(readxl)
 ```
 
 
-# Load data
+## Load data
 
-## BARRACODA FILES
+# BARRACODA FILES
 ```{r}
 path_ct26 <- "test_data/barracoda_output_CT26.xlsx"
 path_4t1 <- "test_data//barracoda_output_4T1.xlsx"
@@ -55,7 +55,7 @@ all_4t1_barracoda_raw <- path_4t1 %>%
 
 ```
 
-## MUPEXI FILES
+# Mupexi files 
 ```{r}
 mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
   # remove extra columns from previous handling
@@ -67,14 +67,14 @@ mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>%
 mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") %>% 
   select(-identifier, -"...1")
 ```
-## PE_population_info and buffycoat_HLA_info file
+# PE_population_info and buffycoat_HLA_info file
 ```{r}
 sample_info <- read_xlsx(path = "test_data/sample_info.xlsx")
 buffycoat.HLA_info <- read_xlsx(path = "test_data/buffycoatHLA_info.xlsx")
 ```
 
 
-## merge all baracoda files 
+# merge all baracoda files 
 
 ```{r}
 all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
@@ -88,8 +88,8 @@ all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) %>%
     mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_"))
 ```
 
-
-## use merge function to merge baracoda and mupexi files the output is my_data 
+# merge data function
+Use merge function to merge baracoda and mupexi files the output is my_data 
 
 ```{r}
 merge_all_data(baracoda =  all_barracoda ,
@@ -99,20 +99,23 @@ merge_all_data(baracoda =  all_barracoda ,
 
 ```
 
-## clean data with clean data function 
+# clean data function 
+with clean data function the varribale is cleaned and reay to import in augment_data fundtion 
 ```{r}
 my_clean_data <- clean_data(my_data)
 ```
 
-## augment data and add the esimated frequency
+# augment data 
+This function will make new column esimated frequency from the baracaoda screening 
+
 
 ```{r}
 my_clean_augment_data <- augment_data(my_clean_data)
 ```
 
 
-## explore data in shiny app 
-
+# explore data in shiny app 
+Tha data can easy be open in a shiny app to explore the responses and the if tehre is and pattern in the immunugenic neoepitopes 
 ```{r}
 Exploring_data_shiny(Plotting_data = my_clean_augment_data )
 ```
