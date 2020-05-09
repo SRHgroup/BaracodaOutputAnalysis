@@ -5,7 +5,4 @@ export(hello)
 export(respond_cols)
 export(scatterplot_function)
 export(seqloggo_generator)
-export(merge_all_data)
-export(clean_data)
-export(augment_data)
-export(Exploring_data_shiny)
+

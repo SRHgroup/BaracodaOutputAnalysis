@@ -3,7 +3,7 @@ title: "barcc"
 output: github_document
 ---
 
-<!-- README.md is generated from the README.Rmd file. Eidt that file for updates -->
+<!-- README.md is generated from the README.Rmd file. Edit that file for updates -->
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
