@@ -3,6 +3,7 @@
 #' This function takes in data and clean
 #' @param data data input
 #' @export
+
 # function with clean data
 augment_data <- function(data = my_clean_data) {
 
