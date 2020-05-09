@@ -89,7 +89,7 @@ all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) %>%
 ```
 
 
-## use merge function to merge baracoda and mupexi files 
+## use merge function to merge baracoda and mupexi files the output is my_data 
 
 ```{r}
 merge_all_data(baracoda =  all_barracoda ,
@@ -98,30 +98,6 @@ merge_all_data(baracoda =  all_barracoda ,
                           buffycoat_HLA_information  = buffycoat.HLA_info)
 
 ```
-
-
-
-
-
-
-
-## Wrangle data 
-```{r}
-
-
-```
-
-## Wrong HLA annotation: H-2XX instead of H2-XX as mupexi. 
-```{r}
-
-```
-
-
-## Merged dataset
-```{r}
-
-```
-
 
 ## clean data with clean data function 
 ```{r}
