@@ -8,10 +8,11 @@
 #' @export
 
 # function to merge
-merge_all_data <- function(baracoda =  all_barracoda ,
+merge_all_data <- function(baracoda =  all_barracoda,
                           mupexi  = all_mupexi,
                           sampel_information = sample_info,
-                          buffycoat_HLA_information  = buffycoat.HLA_info) {
+                          buffycoat_HLA_information  = buffycoat.HLA_info)
+  {
 
   all_barracoda %>% group_by(HLA) %>%
     count()
