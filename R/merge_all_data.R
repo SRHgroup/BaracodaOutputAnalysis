@@ -8,10 +8,10 @@
 #' @export
 
 # function to merge
-merge_all_data <- function(baracoda =  all_barracoda,
-                          mupexi  = all_mupexi,
-                          sampel_information = sample_info,
-                          buffycoat_HLA_information  = buffycoat.HLA_info)
+merge_all_data <- function(all_barracoda =  all_barracoda,
+                           all_mupexi  = all_mupexi,
+                          sample_info = sample_info,
+                          buffycoat.HLA_info  = buffycoat.HLA_info)
   {
 
   all_barracoda %>% group_by(HLA) %>%
@@ -29,7 +29,6 @@ merge_all_data <- function(baracoda =  all_barracoda,
     # add HLA_match column if HLA in any of the buffycoat_HLA info file
     mutate(HLA_match = case_when(HLA %in% buffycoat.HLA_info$HLA1 | HLA %in% buffycoat.HLA_info$HLA2 | HLA %in% buffycoat.HLA_info$HLA3~"yes",
                                  TRUE ~ "no"))
-
 }
 
 

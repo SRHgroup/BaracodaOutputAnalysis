@@ -7,13 +7,6 @@
 
 # The app is en Beta version
 # The app is only for exploring data
-
-library(openxlsx)
-library(shiny)
-library(readxl)
-library(ggplot2)
-library(tidyverse)
-
 Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
 # Define UI for application
   Plotting_data <- Plotting_data %>% arrange(response)

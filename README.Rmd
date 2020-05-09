@@ -32,6 +32,10 @@ barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is 
 ```{r}
 library(tidyverse)
 library(readxl)
+library(openxlsx)
+library(shiny)
+library(ggplot2)
+library(barcc)
 ```
 
 ## Load data
@@ -92,10 +96,10 @@ all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) %>%
 Use merge function to merge baracoda and mupexi files the output is my_data 
 
 ```{r}
-merge_all_data(baracoda =  all_barracoda ,
-                          mupexi  = all_mupexi,
-                          sampel_information = sample_info,
-                          buffycoat_HLA_information  = buffycoat.HLA_info)
+my_data <- merge_all_data(all_barracoda =  all_barracoda,
+                           all_mupexi  = all_mupexi,
+                          sample_info = sample_info,
+                          buffycoat.HLA_info  = buffycoat.HLA_info)
 
 ```
 
