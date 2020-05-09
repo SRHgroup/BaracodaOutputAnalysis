@@ -13,15 +13,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-## THIS PACKGAES IS IN BETA VERION !!
+## THIS PACKGAES IS IN BETA VERION!
 
 The packges will take pre-processed copy of raw baracoda files and mupexi files and illustrate the characteristics of the immunugenic neopeptides. 
 
 ## Installation and background
 
 The packges will take pre-processed copy of raw baracoda files and mupexi files and illustrate the characteristics of the immunugenic neopeptides. 
-The packgaes can take mouse data as input. 
-The human data input is in process ... 
+The packgaes works only with murine data, The human data input is in progress ... 
 
 ```{r, eval = F}
 # install.packages("devtools")
