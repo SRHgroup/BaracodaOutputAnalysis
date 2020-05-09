@@ -6,8 +6,8 @@
 #' @param sampel_information all information about the samplea in the data
 #' @param buffycoat_HLA_information information about HLA in buffycoat
 #' @export
-# function with clean data
-# function with clean data
+
+# function to merge
 merge_all_data <- function(baracoda =  all_barracoda ,
                           mupexi  = all_mupexi,
                           sampel_information = sample_info,
