@@ -116,6 +116,10 @@ my_data <- left_join(mupexi_barracoda, sample_info) %>% #bring PE_population inf
 ```
 
 
+## clean data with clean data function 
+```{r}
+my_clean_data <- clean_data(my_data)
+```
 
 
 
