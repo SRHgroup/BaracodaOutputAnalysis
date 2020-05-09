@@ -2,7 +2,7 @@
 #' exploring data with shiny
 #'
 #' This function takes in data and axplore in ashiny app
-#' @param lotting_data data to plot
+#' @param Plotting_data data to plot
 #' @export
 
 # The app is en Beta version
