@@ -113,6 +113,9 @@ my_clean_augment_data <- augment_data(my_clean_data)
 
 ## explore data in shiny app 
 
+```{r}
+Exploring_data_shiny(Plotting_data = my_clean_augment_data )
+```
 
 
 
