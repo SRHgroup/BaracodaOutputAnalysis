@@ -1,6 +1,10 @@
-
+#' augment data function
+#'
+#' This function takes in data and clean
+#' @param data data input
+#' @export
 # function with clean data
-augment_data <- function(data) {
+augment_data <- function(data = my_clean_data) {
 
   my_data_clean_aug <- data %>%
     # add response column

@@ -1,4 +1,10 @@
 # This is a shiny app for exploring data in mupexi files with screened neoepitope responses
+#' exploring data with shiny
+#'
+#' This function takes in data and axplore in ashiny app
+#' @param lotting_data data to plot
+#' @export
+
 # The app is en Beta version
 # The app is only for exploring data
 
@@ -8,8 +14,6 @@ library(readxl)
 library(ggplot2)
 library(tidyverse)
 
-my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv")
-my_data_clean_aug
 Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
 # Define UI for application
   Plotting_data <- Plotting_data %>% arrange(response)

@@ -1,4 +1,12 @@
-
+#' merge data function
+#'
+#' This function takes in baracoda data, mupexi data, smaple information and buyyfyboat informatin
+#' @param baracoda all merge baracoda files
+#' @param mupexi all merge mupexi files
+#' @param sampel_information all information about the samplea in the data
+#' @param buffycoat_HLA_information information about HLA in buffycoat
+#' @export
+# function with clean data
 # function with clean data
 merge_all_data <- function(baracoda =  all_barracoda ,
                           mupexi  = all_mupexi,
