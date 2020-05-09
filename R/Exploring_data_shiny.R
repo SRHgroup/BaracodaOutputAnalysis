@@ -150,9 +150,6 @@ server <- function(input, output) {
 # Run the application
 shinyApp(ui = ui, server = server)
 }
-
-
-Exploring_data_shiny(my_data_clean_aug)
 ###########################################
 
 
