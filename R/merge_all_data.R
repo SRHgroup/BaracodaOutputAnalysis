@@ -21,10 +21,6 @@ merge_all_data <- function(baracoda =  all_barracoda ,
     mutate(HLA_match = case_when(HLA %in% buffycoat.HLA_info$HLA1 | HLA %in% buffycoat.HLA_info$HLA2 | HLA %in% buffycoat.HLA_info$HLA3~"yes",
                                  TRUE ~ "no"))
 
-
-
-
-
 }
 
 
