@@ -71,7 +71,7 @@ mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>%
          Expression_Level = as.numeric(Expression_Level))
 
 mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") %>% 
-  select(-identifier, -"...1")
+  select(-identifier)
 ```
 ## PE population info and buffycoat HLA info file
 ```{r}

@@ -10,7 +10,7 @@ clean_data <- function(data = my_data) {
   # ------------------------------------------------------------------------------
   my_data_clean <- data %>%
     # Remove "...17" column (useless - added from excel import); "HLA_allele" (same as HLA); identifier
-    select(-`...17`, -HLA_allele, -identifier) %>%
+    select(-HLA_allele, -identifier) %>%
     # replace dots and ( with underscore
     rename_all(funs(str_replace_all(., "\\.|[(]", "_"))) %>%
     # replace spaces and ) with nothing
