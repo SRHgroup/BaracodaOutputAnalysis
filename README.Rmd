@@ -63,10 +63,9 @@ all_4t1_barracoda_raw <- path_4t1 %>%
 ## Mupexi files 
 Load all mupexi files and 
 ```{r}
-mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
+mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx")
 
-mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") %>% 
-  select(-identifier, -"...1")
+mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") 
 ```
 ## PE population info and buffycoat HLA info file
 ```{r}

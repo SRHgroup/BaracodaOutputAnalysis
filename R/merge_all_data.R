@@ -30,7 +30,8 @@ merge_all_data <- function(all_barracoda =  all_barracoda,
     mutate(Mut_MHCrank_EL = as.numeric(Mut_MHCrank_EL),
            Expression_Level = as.numeric(Expression_Level)) %>%
     # identifier column to merge with barracoda - HLA_peptidename
-    mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_"))
+    mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_")) %>%
+    select(-identifier, -"...1")
 
   mupexi_barracoda <- left_join(all_barracoda, all_mupexi, by = "identifier")
 
