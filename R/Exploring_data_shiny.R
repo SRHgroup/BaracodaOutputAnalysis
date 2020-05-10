@@ -8,12 +8,14 @@
 # The app is en Beta version
 # The app is only for exploring data
 Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
+#  Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")] <- sapply(Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")],as.numeric)
 # Define UI for application
   Plotting_data <- Plotting_data %>% arrange(response)
-  selecttions <- Plotting_data %>%  select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
-                                           norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,
-                                           hla,mutation_consequence,cell_line,
-                                           treatment,estimated_frequency_norm) %>%
+  selecttions <- Plotting_data %>%
+    select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
+           norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,
+            hla,mutation_consequence,cell_line,
+            treatment,estimated_frequency_norm) %>%
     colnames()
 ui <- fluidPage(
   titlePanel("Explore data :) "),
