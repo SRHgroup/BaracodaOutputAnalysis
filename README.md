@@ -48,6 +48,8 @@ library(barcc)
 
 ## Baracoda files
 
+Baracoda files from experiment must be loaded
+
 ``` r
 path_ct26 <- "test_data/barracoda_output_CT26.xlsx"
 path_4t1 <- "test_data//barracoda_output_4T1.xlsx"
@@ -76,6 +78,9 @@ all_4t1_barracoda_raw <- path_4t1 %>%
 ```
 
 ## Mupexi files
+
+Load all mupexi files
+and
 
 ``` r
 mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
@@ -108,9 +113,7 @@ all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 ## Merge mupexi files
 
 ``` r
-all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) %>% 
-    # identifier column to merge with barracoda - HLA_peptidename
-    mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_"))
+all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) 
 #> Joining, by = c("HLA_allele", "Norm_peptide", "Norm_MHCrank_EL", "Norm_MHCscore_EL", "Norm_MHCaffinity", "Norm_MHCrank_BA", "Norm_MHCscore_BA", "Mut_peptide", "Mut_MHCrank_EL", "Mut_MHCscore_EL", "Mut_MHCaffinity", "Mut_MHCrank_BA", "Mut_MHCscore_BA", "Gene_ID", "Transcript_ID", "Amino_Acid_Change", "Allele_Frequency", "Mismatches", "peptide_position", "Chr", "Genomic_Position", "Protein_position", "Mutation_Consequence", "Gene_Symbol", "Cancer_Driver_Gene", "Proteome_Peptide_Match", "Expression_Level", "Mutant_affinity_score", "Normal_affinity_score", "Expression_score", "priority_Score", "Self_Similarity")
 ```
 

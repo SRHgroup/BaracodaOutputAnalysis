@@ -23,15 +23,9 @@ merge_all_data <- function(all_barracoda =  all_barracoda,
     # Add identifier colum to merge w/ mupexi
     mutate(identifier = paste(HLA, Sequence, sep = "_"))
 
-  # deselect som of the columns
-  all_mupexi <- all_mupexi %>%   # remove extra columns from previous handling
-    select(-identifier, -Mut_peptide.y, -Allele) %>%
-    # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
-    mutate(Mut_MHCrank_EL = as.numeric(Mut_MHCrank_EL),
-           Expression_Level = as.numeric(Expression_Level)) %>%
+  all_mupexi <- all_mupexi %>%
     # identifier column to merge with barracoda - HLA_peptidename
-    mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_")) %>%
-    select(-identifier, -"...1")
+    mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_"))
 
   mupexi_barracoda <- left_join(all_barracoda, all_mupexi, by = "identifier")
 

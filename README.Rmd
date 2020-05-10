@@ -63,9 +63,15 @@ all_4t1_barracoda_raw <- path_4t1 %>%
 ## Mupexi files 
 Load all mupexi files and 
 ```{r}
-mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx")
+mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
+  # remove extra columns from previous handling
+  select(-identifier, -Mut_peptide.y, -Allele) %>% 
+  # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
+  mutate(Mut_MHCrank_EL = as.numeric(Mut_MHCrank_EL),
+         Expression_Level = as.numeric(Expression_Level))
 
-mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") 
+mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") %>% 
+  select(-identifier, -"...1")
 ```
 ## PE population info and buffycoat HLA info file
 ```{r}
@@ -82,7 +88,7 @@ all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 ## Merge mupexi files 
 
 ```{r}
-all_mupexi <- full_join(mupexi_4t1, mupexi_ct26)
+all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) 
 ```
 
 # Merge data function
