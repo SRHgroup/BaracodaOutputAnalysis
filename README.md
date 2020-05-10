@@ -147,6 +147,7 @@ screening
 ``` r
 my_clean_augment_data <- augment_data(my_clean_data)
 #> Joining, by = "sample"
+save(my_clean_augment_data, file = "exploring_data/my_clean_augment_data.Rdata")
 ```
 
 # Explore data in shiny app

@@ -1,0 +1,12 @@
+name: exploring_data
+title: exploring_data
+username:
+account: annie-borch
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2275360
+bundleId: 3127969
+url: https://annie-borch.shinyapps.io/exploring_data/
+when: 1589123720.90403
+asMultiple: FALSE
+asStatic: FALSE

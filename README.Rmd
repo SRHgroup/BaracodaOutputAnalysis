@@ -113,6 +113,7 @@ This function will make new column esimated frequency from the baracaoda screeni
 
 ```{r}
 my_clean_augment_data <- augment_data(my_clean_data)
+save(my_clean_augment_data, file = "exploring_data/my_clean_augment_data.Rdata")
 ```
 
 
