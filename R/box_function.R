@@ -5,9 +5,7 @@
 #' @param x x variable
 #' @param y y variable
 #' @export
-#'
 
-respond_cols <- c("#91bfdb","#ef8a62")
 box_function <- function(data = my_clean_augment_data,
                          x ='response',
                          y= 'mut_mhcrank_el') {
@@ -19,8 +17,8 @@ box_function <- function(data = my_clean_augment_data,
     facet_grid(vars(cell_line), scales = "free") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))+
-    scale_fill_manual(values = respond_cols) +
-    scale_color_manual(values = respond_cols) +
+    scale_fill_manual(values = c("#91bfdb","#ef8a62")) +
+    scale_color_manual(values = c("#91bfdb","#ef8a62")) +
     guides(fill = FALSE, color = guide_legend(override.aes = list(size = 4)))
   return(p)
  }

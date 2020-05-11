@@ -32,6 +32,8 @@ library(openxlsx)
 library(shiny)
 library(ggplot2)
 library(barcc)
+library(ggrepel)
+library(ggbeeswarm)
 ```
 
 # Load data
@@ -123,7 +125,60 @@ screening
 my_clean_augment_data <- augment_data(my_clean_data)
 ```
 
-## Explore data in shiny app
+# Plotting functions
+
+Firstly the responses can be explored in the following function, where
+the cell line and data is selcted
+
+``` r
+ barc_resp(data = my_clean_augment_data,
+           Cell_Line = "CT26") +
+  labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
+```
+
+![](README-unnamed-chunk-12-1.png)<!-- -->
+
+To look closer to responses and discover the distribution of Imporved
+Binder (IB) and Conserved Binder (CB), the scatter plot funtion can be
+used.
+
+``` r
+scatterplot_function(data = my_clean_augment_data,
+                           x = 'mut_mhcrank_ba', 
+                           y= 'norm_mhcrank_ba')+
+  labs(title= "Binding affinity (BA) of neoepitope vs WT epitope",
+       x= "Neoepitope BA %Rank ",
+       y="WT epitope BA %Rank")
+```
+
+![](README-unnamed-chunk-13-1.png)<!-- -->
+
+To investegate the muations possition in missense mutations the bar plot
+function is constructed
+
+``` r
+bar_plot_func(data = my_clean_augment_data,
+                    pep_length = 10)
+```
+
+![](README-unnamed-chunk-14-1.png)<!-- -->
+
+To see wheter the is a diffrence in the responses and non responses to
+diffrent varraible the box plot function can be used
+
+``` r
+box_function(data = my_clean_augment_data, 
+                   x = 'response',
+                   y= 'self_similarity') +
+  labs(title = "Self-similarity ", 
+       x = "Response", 
+       y = "Self Similarity",
+       color = "Response")
+```
+
+![](README-unnamed-chunk-15-1.png)<!-- -->
+
+# Explore data in shiny app
 
 Tha data can easy be open in a shiny app to explore the responses and
 the if tehre is and pattern in the immunugenic

@@ -4,7 +4,6 @@
 #' @param data data to plot
 #' @param num Length of mut_peptide
 #' @export
-respond_cols <- c("#91bfdb","#ef8a62")
 
 bar_plot_func <- function(data = my_data_clean_aug,
                           pep_length = 9) {
@@ -14,7 +13,7 @@ bar_plot_func <- function(data = my_data_clean_aug,
     geom_bar(aes(fill = response), stat = "count")+
     scale_y_log10() +
     scale_x_discrete(limits = factor(1:pep_length)) +
-    scale_fill_manual(values = respond_cols) +
+    scale_fill_manual(values = c("#91bfdb","#ef8a62")) +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))+
     facet_grid(vars(cell_line))+

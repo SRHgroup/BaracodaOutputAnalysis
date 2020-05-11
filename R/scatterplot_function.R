@@ -16,7 +16,7 @@ scatterplot_function <- function(data = my_clean_augment_data,
     scale_x_log10(breaks = c(0.01, 0.10, 0.5, 1.00, 2.00, 10))+
     theme_bw() +
     scale_alpha_manual(breaks = c("no","yes"),labels = c("no","yes"),values = c(0.3,0.9))+
-    scale_color_manual(values = respond_cols) +
+    scale_color_manual(values = c("#91bfdb","#ef8a62")) +
     guides(color = guide_legend(override.aes = list(size = 5))) +
     facet_grid(vars(cell_line), scales = "free") +
     theme(plot.title = element_text(hjust = 0.5))+

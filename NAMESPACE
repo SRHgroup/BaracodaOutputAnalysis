@@ -2,8 +2,9 @@
 
 export(Exploring_data_shiny)
 export(augment_data)
+export(bar_plot_func)
 export(barc_resp)
+export(box_function)
 export(clean_data)
 export(merge_all_data)
-export(respond_cols)
 export(scatterplot_function)
