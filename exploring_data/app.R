@@ -2,14 +2,9 @@
 library(shiny)
 library(tidyverse)
 
-#load("exploring_data/my_clean_augment_data.Rdata")
-# The app is en Beta version
-# The app is only for exploring data
-# Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
-#     #  Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")] <- sapply(Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")],as.numeric)
-#     # Define UI for application
 
-
+# Load data ---------------------------------------------------------------
+Plotting_data <- read_tsv(file = "03_my_data_clean_aug.tsv")
 Plotting_data <- Plotting_data %>% arrange(response)
 selecttions <- Plotting_data %>%
     select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
@@ -21,8 +16,8 @@ selecttions <- Plotting_data %>%
     ui <- fluidPage(
         titlePanel("Explore data :) "),
         # checkboxes for log scale
-        checkboxInput("logarithmicX", "show x-axis in log10", FALSE),
-        checkboxInput("logarithmicY", "show y-axis in log10", FALSE),
+        checkboxInput("logarithmicX", "show x-axis in log10", TRUE),
+        checkboxInput("logarithmicY", "show y-axis in log10", TRUE),
 
         # check boxes for plotting with ONLY responses
         checkboxInput("selected_dat", "Plot only responses", FALSE),
@@ -145,9 +140,7 @@ selecttions <- Plotting_data %>%
 
     # Run the application
     shinyApp(ui = ui, server = server)
-#}
 
-#Exploring_data_shiny(my_clean_augment_data)
 ###########################################
 
 
