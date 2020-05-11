@@ -13,7 +13,7 @@ barc_resp <- function(data, Cell_Line){
                    alpha = response, size = estimated_frequency_norm)) +
     geom_text_repel(data %>%
                       filter(cell_line == Cell_Line, response == "yes"),
-                    mapping = aes(label = neoepitope_sequence, size = 12)) +
+                    mapping = aes(label = neoepitope_sequence, size = 8)) +
     facet_grid(vars(treatment)) +
     labs(size = "Normalized estimated frequency",
          shape = "Organ",
