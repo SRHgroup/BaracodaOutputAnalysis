@@ -10,7 +10,16 @@
 Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
 #  Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")] <- sapply(Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")],as.numeric)
 # Define UI for application
-  Plotting_data <- Plotting_data %>% arrange(response)
+  Plotting_data <- Plotting_data %>%
+    # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
+    mutate(mut_mhcrank_el = as.numeric(mut_mhcrank_el),
+           mut_mhcrank_ba = as.numeric(mut_mhcrank_ba),
+           expression_level = as.numeric(expression_level),
+           norm_mhcrank_el = as.numeric(norm_mhcrank_el),
+           norm_mhcrank_ba = as.numeric(norm_mhcrank_ba),
+           self_similarity = as.numeric(self_similarity)) %>%
+    arrange(response)
+
   selecttions <- Plotting_data %>%
     select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
            norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,

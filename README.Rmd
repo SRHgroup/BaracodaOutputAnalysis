@@ -5,11 +5,13 @@ output: github_document
 
 <!-- README.md is generated from the README.Rmd file. Edit that file for updates -->
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "README-",
+  warning=FALSE,
+  message=FALSE
 )
 ```
 
@@ -91,7 +93,7 @@ all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) 
 ```
 
-# Merge data function
+## Merge data function
 Use merge function to merge baracoda and mupexi files the output is my_data 
 
 ```{r}
@@ -102,22 +104,21 @@ my_data <- merge_all_data(all_barracoda =  all_barracoda,
 
 ```
 
-# Clean data function 
+## Clean data function 
 with clean data function the varribale is cleaned and reay to import in augment_data fundtion 
 ```{r}
 my_clean_data <- clean_data(my_data)
 ```
 
-# Augment data 
+## Augment data 
 This function will make new column esimated frequency from the baracaoda screening 
 
 ```{r}
 my_clean_augment_data <- augment_data(my_clean_data)
-save(my_clean_augment_data, file = "exploring_data/my_clean_augment_data.Rdata")
 ```
 
 
-# Explore data in shiny app 
+## Explore data in shiny app 
 Tha data can easy be open in a shiny app to explore the responses and the if tehre is and pattern in the immunugenic neoepitopes 
 ```{r}
 Exploring_data_shiny(Plotting_data = my_clean_augment_data )
