@@ -4,7 +4,11 @@
 \alias{scatterplot_function}
 \title{Scatter Plot Function}
 \usage{
-scatterplot_function(data, x, y)
+scatterplot_function(
+  data = my_clean_augment_data,
+  x = "mut_mhcrank_el",
+  y = "expression_level"
+)
 }
 \arguments{
 \item{data}{data to plot}

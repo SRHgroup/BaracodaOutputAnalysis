@@ -7,8 +7,7 @@
 respond_cols <- c("#91bfdb","#ef8a62")
 
 bar_plot_func <- function(data = my_data_clean_aug,
-                          pep_length = 9 ,
-                          no_legend = TRUE) {
+                          pep_length = 9) {
   p <- data %>%
     filter(str_length(mut_peptide)==pep_length,mutation_consequence=="M") %>%
     ggplot(aes(x=peptide_position)) +
@@ -21,9 +20,6 @@ bar_plot_func <- function(data = my_data_clean_aug,
     facet_grid(vars(cell_line))+
     labs(x = "Peptide Position",
          y = "Count")
-
-  # Determine legend
-  if (no_legend == TRUE) p <- p + theme(legend.position = 'none') else NULL
 
   return(p)
 }

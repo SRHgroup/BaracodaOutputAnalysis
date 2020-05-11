@@ -54,7 +54,15 @@ augment_data <- function(data = my_clean_data) {
 
     # change estimated_frequency_norm of non-response peptides to 0, as this measure is not relevant
     mutate(estimated_frequency_norm = case_when(response == "no" ~ 0,
-                                                TRUE ~ as.numeric(estimated_frequency_norm)))
+                                                TRUE ~ as.numeric(estimated_frequency_norm))) %>%
+    # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
+    mutate(mut_mhcrank_el = as.numeric(mut_mhcrank_el),
+           mut_mhcrank_ba = as.numeric(mut_mhcrank_ba),
+           expression_level = as.numeric(expression_level),
+           norm_mhcrank_el = as.numeric(norm_mhcrank_el),
+           norm_mhcrank_ba = as.numeric(norm_mhcrank_ba),
+           self_similarity = as.numeric(self_similarity)) %>%
+    arrange(response)
 
 }
 
