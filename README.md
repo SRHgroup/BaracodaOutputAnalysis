@@ -136,7 +136,7 @@ the cell line and data is selcted
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
 ```
 
-![](README-unnamed-chunk-12-1.png)<!-- -->
+![](README-baracoda_response_plot-1.png)<!-- -->
 
 To look closer to responses and discover the distribution of Imporved
 Binder (IB) and Conserved Binder (CB), the scatter plot funtion can be
@@ -151,7 +151,7 @@ scatterplot_function(data = my_clean_augment_data,
        y="WT epitope BA %Rank")
 ```
 
-![](README-unnamed-chunk-13-1.png)<!-- -->
+![](README-scatter_plot-1.png)<!-- -->
 
 To investegate the muations possition in missense mutations the bar plot
 function is constructed
@@ -161,7 +161,7 @@ bar_plot_func(data = my_clean_augment_data,
                     pep_length = 10)
 ```
 
-![](README-unnamed-chunk-14-1.png)<!-- -->
+![](README-bar_plot-1.png)<!-- -->
 
 To see wheter the is a diffrence in the responses and non responses to
 diffrent varraible the box plot function can be used
@@ -176,13 +176,15 @@ box_function(data = my_clean_augment_data,
        color = "Response")
 ```
 
-![](README-unnamed-chunk-15-1.png)<!-- -->
+![](README-box_plot-1.png)<!-- -->
 
 # Explore data in shiny app
 
 Tha data can easy be open in a shiny app to explore the responses and
-the if tehre is and pattern in the immunugenic
-neoepitopes
+the if there is and pattern in the immunugenic neoepitopes in
+[Shiny\_exploring](https://annie-borch.shinyapps.io/exploring_data/) Or
+with the following function in
+Rstudio.
 
 ``` r
 Exploring_data_shiny(Plotting_data = my_clean_augment_data )
