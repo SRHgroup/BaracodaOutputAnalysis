@@ -5,10 +5,9 @@
 \title{Scatter Plot Function}
 \usage{
 scatterplot_function(
-  data = data_single_peptides,
+  data = my_clean_augment_data,
   x = "mut_mhcrank_el",
-  y = "expression_level",
-  no_legend = TRUE
+  y = "expression_level"
 )
 }
 \arguments{
@@ -17,8 +16,6 @@ scatterplot_function(
 \item{x}{x variable}
 
 \item{y}{y variable}
-
-\item{no_legend}{determind legend}
 }
 \description{
 This function takes in data, x, and y, and creates a scatter plot.

@@ -4,7 +4,11 @@
 \alias{box_function}
 \title{Box Plot Function}
 \usage{
-box_function(data = data_single_peptides, x, y, no_legend = TRUE)
+box_function(
+  data = my_clean_augment_data,
+  x = "response",
+  y = "mut_mhcrank_el"
+)
 }
 \arguments{
 \item{data}{data to plot}
@@ -12,8 +16,6 @@ box_function(data = data_single_peptides, x, y, no_legend = TRUE)
 \item{x}{x variable}
 
 \item{y}{y variable}
-
-\item{no_legend}{determine legend}
 }
 \description{
 This function takes in data, x, and y, and creates a box plot.

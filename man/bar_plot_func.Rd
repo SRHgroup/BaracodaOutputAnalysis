@@ -4,14 +4,12 @@
 \alias{bar_plot_func}
 \title{Bar Plot Function}
 \usage{
-bar_plot_func(data = my_data_clean_aug, pep_length = 9, no_legend = TRUE)
+bar_plot_func(data = my_data_clean_aug, pep_length = 9)
 }
 \arguments{
 \item{data}{data to plot}
 
-\item{pep_length}{length of mut_peptide}
-
-\item{no_length}{determine length}
+\item{num}{Length of mut_peptide}
 }
 \description{
 This function allows you to do a bar plot from specified peptide_position

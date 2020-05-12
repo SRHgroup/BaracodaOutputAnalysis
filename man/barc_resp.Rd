@@ -4,7 +4,7 @@
 \alias{barc_resp}
 \title{barcoda response generater}
 \usage{
-barc_resp(d, c)
+barc_resp(data, Cell_Line)
 }
 \arguments{
 \item{data}{data to use}
