@@ -4,12 +4,12 @@
 \alias{barc_resp}
 \title{barcoda response generater}
 \usage{
-barc_resp(data, Cell_Line)
+barc_resp(data, mouse_cell_line)
 }
 \arguments{
 \item{data}{data to use}
 
-\item{Cell_Line}{select mouse cell line}
+\item{mouse_cell_line}{select mouse cell line}
 }
 \description{
 This function generates a sequence of logo.

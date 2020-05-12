@@ -7,8 +7,7 @@
 merge_all_data(
   all_barracoda = all_barracoda,
   all_mupexi = all_mupexi,
-  sample_info = sample_info,
-  buffycoat.HLA_info = buffycoat.HLA_info
+  sample_info = sample_info
 )
 }
 \arguments{
@@ -16,7 +15,7 @@ merge_all_data(
 
 \item{mupexi}{all merge mupexi files}
 
-\item{sampel_information}{all information about the samplea in the data}
+\item{sampel_information}{all information about the sample in the data}
 
 \item{buffycoat_HLA_information}{information about HLA in buffycoat}
 }
