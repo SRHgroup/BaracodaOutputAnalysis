@@ -83,15 +83,6 @@ kable(head(mupexi_4t1))
 ```
 
 
-## Buffycoat HLA info file
-```{r}
-buffycoat.HLA_info <- read_xlsx(path = "test_data/buffycoatHLA_info.xlsx")
-kable(buffycoat.HLA_info)
-```
-
-
-
-
 ## Sample information file 
 ```{r}
 sample_info <- read_xlsx(path = "test_data/sample_info.xlsx")
