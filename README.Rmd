@@ -119,7 +119,7 @@ my_clean_data <- clean_data(my_data)
 ```
 
 ## Augment data 
-This Augment function will make new column with esimated frequency from the baracaoda screening 
+This Augment function will make new column with esimated frequency from the barracoda screening 
 
 ```{r}
 my_clean_augment_data <- augment_data(my_clean_data)
@@ -127,10 +127,10 @@ my_clean_augment_data <- augment_data(my_clean_data)
 
 # Plotting functions 
 Firstly the responses can be explored in the following function, 
-where the cell line and data is selcted 
-```{r baracoda_response_plot, width = 20 , height  = 15}
+where the cell line and data is selected 
+```{r barracoda_response_plot, width = 20 , height  = 15}
  barc_resp(data = my_clean_augment_data,
-           Cell_Line = "CT26") +
+           mouse_cell_line = "CT26") +
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
 ```
 
@@ -143,7 +143,6 @@ scatterplot_function(data = my_clean_augment_data,
        x= "Neoepitope BA %Rank ",
        y="WT epitope BA %Rank")
 ```
-
 
 
 To investegate the muations possition in missense mutations the bar plot function is constructed 
