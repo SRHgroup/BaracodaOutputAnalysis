@@ -114,6 +114,7 @@ my_data <- merge_all_data(barracoda =  all_barracoda,
 
 ## Clean data function 
 With clean data function the varribale is cleaned and ready to import in augment_data function 
+
 ```{r}
 my_clean_data <- clean_data(my_data)
 ```
@@ -125,10 +126,11 @@ This Augment function will make new column with esimated frequency from the barr
 my_clean_augment_data <- augment_data(my_clean_data)
 ```
 
+
 # Plotting functions 
-Firstly the responses can be explored in the following function, 
-where the cell line and data is selected 
-```{r barracoda_response_plot, width = 20 , height  = 15}
+Firstly the responses can be explored in the following function, where the cell line and data is selected
+
+```{r barra_response_plot, width = 20 , height  = 15}
  barc_resp(data = my_clean_augment_data,
            mouse_cell_line = "CT26") +
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")

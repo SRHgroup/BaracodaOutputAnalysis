@@ -166,7 +166,7 @@ Firstly the responses can be explored in the following function, where the cell 
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
 ```
 
-![](README-barracoda_response_plot-1.png)
+![](README-barra_response_plot-1.png)
 
 To look closer to responses and discover the distribution of Imporved Binder (IB) and Conserved Binder (CB), the scatter plot funtion can be used.
 
