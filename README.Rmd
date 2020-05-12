@@ -27,7 +27,7 @@ The packgaes works only with murine data, The human data input is in progress ..
 ```{r, eval = F}
 # install.packages("devtools")
 library(devtools)
-#devtools::install_github("rforbiodatascience/barcc")
+devtools::install_github("rforbiodatascience/barcc")
 library(barcc)
 ```
 barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running 
