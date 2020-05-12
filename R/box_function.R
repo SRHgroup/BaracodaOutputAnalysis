@@ -4,11 +4,13 @@
 #' @param data data to plot
 #' @param x x variable
 #' @param y y variable
+#' @param no_legend determine legend
 #' @export
 
-box_function <- function(data = my_clean_augment_data,
-                         x ='response',
-                         y= 'mut_mhcrank_el') {
+box_function <- function(data = data_single_peptides,
+                         x,
+                         y,
+                         no_legend = TRUE) {
   p <-  data %>%
     ggplot(mapping = aes_string(x = x, y = y)) +
     geom_quasirandom(aes(color = response),size = 2) +
@@ -17,9 +19,13 @@ box_function <- function(data = my_clean_augment_data,
     facet_grid(vars(cell_line), scales = "free") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))+
-    scale_fill_manual(values = c("#91bfdb","#ef8a62")) +
-    scale_color_manual(values = c("#91bfdb","#ef8a62")) +
+    scale_fill_manual(values = respond_cols) +
+    scale_color_manual(values = respond_cols) +
     guides(fill = FALSE, color = guide_legend(override.aes = list(size = 4)))
+
+  # Determine legend
+  if (no_legend == TRUE) p <- p + theme(legend.position = 'none') else NULL
+
   return(p)
- }
+}
 
