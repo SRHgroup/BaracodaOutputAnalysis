@@ -2,17 +2,18 @@
 #'
 #' This function generates a sequence of logo.
 #' @param data data to use
-#' @param Cell_Line select mouse cell line
+#' @param mouse_cell_line select mouse cell line
 #' @export
 
 # Baracoda respond function -----------------------------------------------
-barc_resp <- function(data, Cell_Line){
-  p <- data %>% filter(cell_line == Cell_Line) %>%
+barc_resp <- function(data, mouse_cell_line){
+
+  p <- data %>% filter(cell_line == mouse_cell_line) %>%
     ggplot(., aes(peptide_name, log_fold_change)) +
     geom_point(aes(color = sample, shape = organ,
                    alpha = response, size = estimated_frequency_norm)) +
     geom_text_repel(data %>%
-                      filter(cell_line == Cell_Line, response == "yes"),
+                      filter(cell_line == mouse_cell_line, response == "yes"),
                     mapping = aes(label = neoepitope_sequence)) +
     facet_grid(vars(treatment)) +
     labs(size = "Normalized estimated frequency",

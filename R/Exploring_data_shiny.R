@@ -8,7 +8,6 @@
 # The app is en Beta version
 # The app is only for exploring data
 Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
-#  Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")] <- sapply(Mupexi_file[c("Expression_Level","Mut_MHCrank_EL", "Self_Similarity")],as.numeric)
 # Define UI for application
   Plotting_data <- Plotting_data %>%
     # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
@@ -151,7 +150,7 @@ server <- function(input, output) {
 
 }
 
-# Run the application
+# Run the app
 shinyApp(ui = ui, server = server)
 }
 ###########################################

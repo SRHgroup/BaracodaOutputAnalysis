@@ -8,8 +8,8 @@
 
 scatterplot_function <- function(data = my_clean_augment_data,
                                  x = 'mut_mhcrank_el',
-                                 y = 'expression_level')
-{ p <- data %>%
+                                 y = 'expression_level') {
+p <- data %>%
     ggplot(mapping = aes_string(x = x, y = y)) +
     geom_point(aes(color=response, alpha = response, size  = estimated_frequency_norm))+
     scale_y_log10(breaks = c(0.01, 0.10, 0.5, 1.00, 2.00, 10))+
