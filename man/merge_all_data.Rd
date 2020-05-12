@@ -5,17 +5,17 @@
 \title{merge data function}
 \usage{
 merge_all_data(
-  all_barracoda = all_barracoda,
+  barracoda = all_barracoda,
   mupexi = all_mupexi,
   info = sample_info
 )
 }
 \arguments{
+\item{barracoda}{all merge baracoda files}
+
 \item{mupexi}{all merge mupexi files}
 
 \item{info}{all information about the sample in the data}
-
-\item{barracoda}{all merge baracoda files}
 }
 \description{
 This function takes in baracoda data, mupexi data, smaple information and buyyfyboat informatin

@@ -7,7 +7,7 @@
 #' @export
 
 # function to merge
-merge_all_data <- function(all_barracoda =  all_barracoda,
+merge_all_data <- function(barracoda =  all_barracoda,
                            mupexi  = all_mupexi,
                            info = sample_info){
 
