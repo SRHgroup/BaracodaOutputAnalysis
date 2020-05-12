@@ -27,7 +27,8 @@ The packgaes works only with murine data, The human data input is in progress ..
 ```{r, eval = F}
 # install.packages("devtools")
 library(devtools)
-devtools::install_github("rforbiodatascience/barcc")
+#devtools::install_github("rforbiodatascience/barcc")
+library(barcc)
 ```
 barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running 
 ## required packages 
@@ -40,6 +41,7 @@ library(ggplot2)
 library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
+library(knitr)
 ```
 
 # Load data
@@ -61,11 +63,12 @@ all_4t1_barracoda_raw <- path_4t1 %>%
     excel_sheets() %>% 
     set_names() %>% 
     map_df(~ read_excel(path = path_4t1, sheet = .x), .id = "sheet")
+kable(head(all_4t1_barracoda_raw))
 
 ```
 
 ## Mupexi files 
-Load all mupexi files and 
+Load all mupexi files 
 ```{r}
 mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
   # remove extra columns from previous handling
@@ -76,11 +79,23 @@ mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>%
 
 mupexi_4t1 <- read_xlsx(path = "test_data/4T1_library_mupexi.xlsx") %>% 
   select(-identifier)
+kable(head(mupexi_4t1))
 ```
-## PE population info and buffycoat HLA info file
+
+
+## Buffycoat HLA info file
+```{r}
+buffycoat.HLA_info <- read_xlsx(path = "test_data/buffycoatHLA_info.xlsx")
+kable(buffycoat.HLA_info)
+```
+
+
+
+
+## Sample information file 
 ```{r}
 sample_info <- read_xlsx(path = "test_data/sample_info.xlsx")
-buffycoat.HLA_info <- read_xlsx(path = "test_data/buffycoatHLA_info.xlsx")
+kable(head(sample_info))
 ```
 
 
@@ -89,6 +104,7 @@ buffycoat.HLA_info <- read_xlsx(path = "test_data/buffycoatHLA_info.xlsx")
 ```{r}
 all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 ```
+
 ## Merge mupexi files 
 
 ```{r}
@@ -107,13 +123,13 @@ my_data <- merge_all_data(all_barracoda =  all_barracoda,
 ```
 
 ## Clean data function 
-with clean data function the varribale is cleaned and reay to import in augment_data fundtion 
+With clean data function the varribale is cleaned and ready to import in augment_data function 
 ```{r}
 my_clean_data <- clean_data(my_data)
 ```
 
 ## Augment data 
-This function will make new column esimated frequency from the baracaoda screening 
+This Augment function will make new column with esimated frequency from the baracaoda screening 
 
 ```{r}
 my_clean_augment_data <- augment_data(my_clean_data)
