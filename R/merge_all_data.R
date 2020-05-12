@@ -1,34 +1,32 @@
 #' merge data function
 #'
 #' This function takes in baracoda data, mupexi data, smaple information and buyyfyboat informatin
-#' @param baracoda all merge baracoda files
+#' @param barracoda all merge baracoda files
 #' @param mupexi all merge mupexi files
-#' @param sampel_information all information about the sample in the data
-#' @param buffycoat_HLA_information information about HLA in buffycoat
+#' @param info all information about the sample in the data
 #' @export
 
 # function to merge
 merge_all_data <- function(all_barracoda =  all_barracoda,
-                           all_mupexi  = all_mupexi,
-                          sample_info = sample_info)
-  {
+                           mupexi  = all_mupexi,
+                           info = sample_info){
 
-  all_barracoda %>% group_by(HLA) %>%
+  barracoda %>% group_by(HLA) %>%
     count()
 
-  all_barracoda <-  all_barracoda %>%
+  barracoda <-  barracoda %>%
     # Rename it so that columns can be merged
     mutate(HLA = str_replace(HLA, "^H-2", "H2-")) %>%
     # Add identifier colum to merge w/ mupexi
     mutate(identifier = paste(HLA, Sequence, sep = "_"))
 
-  all_mupexi <- all_mupexi %>%
+  mupexi <- all_mupexi %>%
     # identifier column to merge with barracoda - HLA_peptidename
     mutate(identifier = paste(HLA_allele, Mut_peptide, sep = "_"))
 
-  mupexi_barracoda <- left_join(all_barracoda, all_mupexi, by = "identifier")
+  mupexi_barracoda <- left_join(barracoda, mupexi, by = "identifier")
 
-  my_data <- left_join(mupexi_barracoda, sample_info)
+  my_data <- left_join(mupexi_barracoda, info)
 
 }
 

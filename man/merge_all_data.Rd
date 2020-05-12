@@ -6,18 +6,16 @@
 \usage{
 merge_all_data(
   all_barracoda = all_barracoda,
-  all_mupexi = all_mupexi,
-  sample_info = sample_info
+  mupexi = all_mupexi,
+  info = sample_info
 )
 }
 \arguments{
-\item{baracoda}{all merge baracoda files}
-
 \item{mupexi}{all merge mupexi files}
 
-\item{sampel_information}{all information about the sample in the data}
+\item{info}{all information about the sample in the data}
 
-\item{buffycoat_HLA_information}{information about HLA in buffycoat}
+\item{barracoda}{all merge baracoda files}
 }
 \description{
 This function takes in baracoda data, mupexi data, smaple information and buyyfyboat informatin
