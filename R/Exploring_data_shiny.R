@@ -17,9 +17,11 @@ Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
            norm_mhcrank_el = as.numeric(norm_mhcrank_el),
            norm_mhcrank_ba = as.numeric(norm_mhcrank_ba),
            self_similarity = as.numeric(self_similarity)) %>%
-    arrange(response)
+    arrange(response) %>%
+    group_by(response) %>%
+    distinct(identifier, .keep_all = T)
 
-  selecttions <- Plotting_data %>%
+  selections <- Plotting_data %>%
     select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
            norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,
             hla,mutation_consequence,cell_line,
@@ -40,33 +42,33 @@ ui <- fluidPage(
     sidebarPanel(
       # Select choices to put in the x-axis
       selectInput(inputId = "x", label = "X-axis:",
-                  choices = selecttions ,
+                  choices = selections ,
                   selected = "mut_mhcrank_el"
       ),
       # Select choices to put in the y-axis
       selectInput(inputId = "y", label = "Y-axis:",
-                  choices = selecttions,
+                  choices = selections,
                   selected = "norm_mhcrank_el"
                   ),
       # Select choices to put in the x-axis
       selectInput(inputId = "size", label = "size:",
-                  choices = selecttions ,
+                  choices = selections ,
                   selected = "estimated_frequency_norm"
       ),
 
       # select choices to color stuff
       selectInput(inputId = "ColorVar", label = "Color stuff",
-                  choices = selecttions ,
+                  choices = selections ,
                   selected = "response"
                   ),
      # select choises for the alpha scale
       selectInput(inputId = "alpha", label = "alpha",
-                  choices = selecttions,
+                  choices = selections,
                   selected = "response"
                   ),
       # select choises for facet
       selectInput(inputId = "facet", label = "facet",
-                  choices = c("none", selecttions ) ,
+                  choices = c("none", selections ) ,
                    selected = "none"),
      # select choises for plot type
       selectInput("plot.type","Plot Type:",
@@ -116,7 +118,9 @@ server <- function(input, output) {
       plot.type<-switch(input$plot.type,
                         "boxplot" 	= Plotting_data %>%
                           ggplot(mapping = aes_string(x = input$x, y = input$y)) +
-                          geom_boxplot(aes_string(color = input$ColorVar), alpha=0.5) +
+                          geom_quasirandom(aes_string(color = input$ColorVar),size = 2) +
+                          geom_boxplot(aes_string(fill = input$ColorVar),
+                                       alpha = .5, outlier.shape = NA, colour = '#525252') +
                           theme_bw() ,
 
                         "dotplot" = Plotting_data %>%
