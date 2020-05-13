@@ -17,7 +17,7 @@ barc_resp <- function(data = my_clean_augment_data,
                       filter(cell_line == mouse_cell_line, response == "yes"),
                     mapping = aes(label = peptide_name)) +
     facet_grid(vars(treatment)) +
-    labs(size = "Normalized estimated frequency",
+    labs(size = "Normalized est. freq.",
          shape = "Organ",
          color = "Sample",
          alpha = "Response",
@@ -29,9 +29,10 @@ barc_resp <- function(data = my_clean_augment_data,
           legend.title = element_text(size = 16),
           legend.text = element_text(size = 14),
           legend.position = 'bottom') +
-    guides(color = guide_legend(override.aes = list(size = 4)),
-           alpha = guide_legend(override.aes = list(size = 4)),
-           shape = guide_legend(override.aes = list(size = 4)))
+    guides(color = guide_legend(override.aes = list(size = 4), nrow = 8 ,title.position="top"),
+           alpha = guide_legend(override.aes = list(size = 4), nrow = 2 ,title.position="top"),
+           shape = guide_legend(override.aes = list(size = 4), nrow = 2 ,title.position="top"),
+    size = guide_legend(nrow = 6, title.position="top"))
   return(p)
 }
 

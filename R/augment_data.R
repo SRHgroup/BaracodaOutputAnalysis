@@ -50,7 +50,7 @@ augment_data <- function(data = my_clean_data) {
   my_data_clean_aug <- full_join(my_data_clean_aug, count_norm_signif) %>%
 
     # add estimated_frequency_normalized column
-    mutate(estimated_frequency_norm = (count_norm_signif*percent_pe/count_norm_signif)) %>%
+    mutate(estimated_frequency_norm = ((count_normalised_edger*percent_pe)/count_norm_signif)) %>%
 
     # change estimated_frequency_norm of non-response peptides to 0, as this measure is not relevant
     mutate(estimated_frequency_norm = case_when(response == "no" ~ 0,

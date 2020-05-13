@@ -132,7 +132,7 @@ The packages contaions folowing plotting functions
 ### barc_resp: Ilustrateing responses from baracoda
 Firstly the responses can be explored in the following function, where the cell line and data is selected
 
-```{r barra_response_plot, width = 25 , height  = 15}
+```{r barra_response_plot, width = 25 , height  = 20}
  barc_resp(data = my_clean_augment_data,
            mouse_cell_line = "CT26") +
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
