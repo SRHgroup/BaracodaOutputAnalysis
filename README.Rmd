@@ -40,6 +40,7 @@ library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
 library(knitr)
+library(ggseqlogo)
 ```
 
 ## Load data
@@ -166,15 +167,6 @@ box_function(data = my_clean_augment_data,
        y = "Self Similarity",
        color = "Response")
 ```
-
-
-### seqloggo_generator: Making ggseq logos 
-```{r}
-seqloggo_generator(data = my_clean_augment_data ,
-                   len = 9,
-                   resp = c("yes"))
-```
-
 
 ## Explore data in shiny app 
 Tha data can easy be open in a shiny app to explore the responses and the if there is and pattern in the immunugenic neoepitopes in [Shiny_exploring](https://annie-borch.shinyapps.io/exploring_data/)
