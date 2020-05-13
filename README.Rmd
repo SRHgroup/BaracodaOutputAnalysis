@@ -15,14 +15,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-## THIS PACKGAES IS IN BETA VERION!
-
 The packges will take pre-processed copy of raw baracoda files and mupexi files and illustrate the characteristics of the immunugenic neopeptides. 
 
 ## Installation and background
 
 The packges will take pre-processed copy of raw baracoda files and mupexi files and illustrate the characteristics of the immunugenic neopeptides. 
-The packgaes works only with murine data, The human data input is in progress ... 
+The packgaes works only with murine data, The human data input is in progress. 
 
 ```{r, eval = F}
 # install.packages("devtools")
@@ -30,7 +28,7 @@ library(devtools)
 devtools::install_github("rforbiodatascience/barcc")
 library(barcc)
 ```
-barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running 
+barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running.
 ## required packages 
 ```{r}
 library(tidyverse)

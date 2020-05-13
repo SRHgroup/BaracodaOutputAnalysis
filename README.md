@@ -3,8 +3,6 @@ barcc
 
 <!-- README.md is generated from the README.Rmd file. Edit that file for updates -->
 
-## THIS PACKGAES IS IN BETA VERION\!
-
 The packges will take pre-processed copy of raw baracoda files and
 mupexi files and illustrate the characteristics of the immunugenic
 neopeptides.
@@ -14,7 +12,7 @@ neopeptides.
 The packges will take pre-processed copy of raw baracoda files and
 mupexi files and illustrate the characteristics of the immunugenic
 neopeptides. The packgaes works only with murine data, The human data
-input is in progress …
+input is in progress.
 
 ``` r
 # install.packages("devtools")
@@ -24,7 +22,7 @@ library(barcc)
 ```
 
 barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)
-and is required for running \#\# required packages
+and is required for running. \#\# required packages
 
 ``` r
 library(tidyverse)
