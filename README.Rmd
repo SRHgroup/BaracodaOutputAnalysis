@@ -129,7 +129,7 @@ my_clean_augment_data <- augment_data(my_clean_data)
 ## Plotting functions 
 The packages contaions folowing plotting functions 
 
-### barc_resp: Illustrateing responses from baracoda
+### barc_resp: Ilustrateing responses from baracoda
 Firstly the responses can be explored in the following function, where the cell line and data is selected
 
 ```{r barra_response_plot, width = 25 , height  = 15}
