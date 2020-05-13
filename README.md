@@ -34,11 +34,12 @@ library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
 library(knitr)
+library(ggseqlogo)
 ```
 
-# Load data
+## Load data
 
-## Baracoda files
+### Baracoda files
 
 Baracoda files from experiment must be loaded
 
@@ -69,7 +70,7 @@ kable(head(all_4t1_barracoda_raw))
 | X4T1\_16.TU | A18B204 | 4T1\_16-TU |       0 |      36 |      31 |      39 |        \-7.767225 | 0.0713457 |  1.1466323 |                       1.0000000 |            0.00000 |                0.0000000 |                0.0085468 | 4T1\_102     | H-2Kd | EYLTAKNMKL  |
 | X4T1\_16.TU | A18B206 | 4T1\_16-TU |       2 |      79 |     121 |     115 |        \-1.269234 | 0.3793029 |  0.4210138 |                       1.0000000 |            0.00000 |                0.0104167 |                0.0251642 | 4T1\_103     | H-2Kd | YYFTMAQQP   |
 
-## Mupexi files
+### Mupexi files
 
 Load all mupexi
 files
@@ -96,7 +97,7 @@ kable(head(mupexi_4t1))
 | H2-Kb       | HMFLFARL      | 0.0064            | 0.978047           | 3.4               | 0.0085            | 0.885905           | HMFLFGRL     |           0.0203 | 0.94733           | 5.9              | 0.0133           | 0.836579          | MGP\_BALBcJ\_G0026916 | MGP\_BALBcJ\_T0059483                       | A/G                 | 0.467             | 1          | 6                 | 2   | 171330471         | 214               | M                     | Mc3r         | \-                   | No                       |         0.1588522 | 0.9999497525243818      | 0.9999531259750578      | 0.2532216695531489 | 6               | 0.965400         |
 | H2-Dd       | AGFSSFQKI     | 0.0881            | 0.371051           | 12894.2           | 2.6668            | 0.125256           | AGFSSFQKL    |           0.0267 | 0.465965          | 10559.4          | 1.8413           | 0.143719          | MGP\_BALBcJ\_G0031040 | MGP\_BALBcJ\_T0079002                       | I/L                 | 0.483             | 1          | 9                 | 6   | 90823751          | 1826              | M                     | Adamts9      | \-                   | No                       |         2.3905895 | 0.9999481186865968      | 0.9999294769199811      | 0.9863617148770685 | 24              | 0.992681         |
 
-## Sample information file
+### Sample information file
 
 ``` r
 sample_info <- read_xlsx(path = "test_data/sample_info.xlsx")
@@ -112,19 +113,19 @@ kable(head(sample_info))
 | CT26\_D2 |        3.22 |
 | CT26\_D4 |        3.84 |
 
-## Merge all baracoda files
+### Merge all baracoda files
 
 ``` r
 all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 ```
 
-## Merge mupexi files
+### Merge mupexi files
 
 ``` r
 all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) 
 ```
 
-## Merge data function
+### Merge data function
 
 Use merge function to merge baracoda and mupexi files the output is
 my\_data
@@ -135,7 +136,7 @@ my_data <- merge_all_data(barracoda =  all_barracoda,
                           info = sample_info)
 ```
 
-## Clean data function
+### Clean data function
 
 With clean data function the varribale is cleaned and ready to import in
 augment\_data function
@@ -144,7 +145,7 @@ augment\_data function
 my_clean_data <- clean_data(my_data)
 ```
 
-## Augment data
+### Augment data
 
 This Augment function will make new column with esimated frequency from
 the barracoda screening
@@ -153,7 +154,11 @@ the barracoda screening
 my_clean_augment_data <- augment_data(my_clean_data)
 ```
 
-# Plotting functions
+## Plotting functions
+
+The packages contaions folowing plotting functions
+
+### barc\_resp: Illustrateing responses from baracoda
 
 Firstly the responses can be explored in the following function, where
 the cell line and data is selected
@@ -165,6 +170,8 @@ the cell line and data is selected
 ```
 
 ![](README-barra_response_plot-1.png)<!-- -->
+
+### scatterplot\_function: Making scatter plot from data
 
 To look closer to responses and discover the distribution of Imporved
 Binder (IB) and Conserved Binder (CB), the scatter plot funtion can be
@@ -181,6 +188,8 @@ scatterplot_function(data = my_clean_augment_data,
 
 ![](README-scatter_plot-1.png)<!-- -->
 
+### bar\_plot\_func: Making bar plot from data
+
 To investegate the muations possition in missense mutations the bar plot
 function is constructed
 
@@ -190,6 +199,8 @@ bar_plot_func(data = my_clean_augment_data,
 ```
 
 ![](README-bar_plot-1.png)<!-- -->
+
+### box\_function: Making boxplot
 
 To see wheter the is a diffrence in the responses and non responses to
 diffrent varraible the box plot function can be used
@@ -206,7 +217,7 @@ box_function(data = my_clean_augment_data,
 
 ![](README-box_plot-1.png)<!-- -->
 
-# Explore data in shiny app
+## Explore data in shiny app
 
 Tha data can easy be open in a shiny app to explore the responses and
 the if there is and pattern in the immunugenic neoepitopes in
