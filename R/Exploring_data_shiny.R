@@ -26,7 +26,7 @@ Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
             treatment,estimated_frequency_norm) %>%
     colnames()
 ui <- fluidPage(
-  titlePanel("Explore data :) "),
+  titlePanel("Barcc  - exploring data"),
   # checkboxes for log scale
   checkboxInput("logarithmicX", "show x-axis in log10", FALSE),
   checkboxInput("logarithmicY", "show y-axis in log10", FALSE),
