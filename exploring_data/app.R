@@ -1,12 +1,17 @@
 # This is a shiny app for exploring data in mupexi files with screened neoepitope responses
 library(shiny)
 library(tidyverse)
+library(ggbeeswarm)
 
 
 # Load data ---------------------------------------------------------------
 Plotting_data <- read_tsv(file = "03_my_data_clean_aug.tsv")
-Plotting_data <- Plotting_data %>% arrange(response)
-selecttions <- Plotting_data %>%
+Plotting_data <- Plotting_data %>%
+    group_by(response) %>%
+    distinct(identifier, .keep_all = T) %>%
+    arrange(response)
+
+selections <- Plotting_data %>%
     select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
            norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,
            hla,mutation_consequence,cell_line,
@@ -28,33 +33,33 @@ ui <- fluidPage(
         sidebarPanel(
             # Select choices to put in the x-axis
             selectInput(inputId = "x", label = "X-axis:",
-                        choices = selecttions ,
+                        choices = selections ,
                         selected = "mut_mhcrank_el"
             ),
             # Select choices to put in the y-axis
             selectInput(inputId = "y", label = "Y-axis:",
-                        choices = selecttions,
+                        choices = selections,
                         selected = "norm_mhcrank_el"
             ),
             # Select choices to put in the x-axis
             selectInput(inputId = "size", label = "size:",
-                        choices = selecttions ,
+                        choices = selections ,
                         selected = "estimated_frequency_norm"
             ),
 
             # select choices to color stuff
             selectInput(inputId = "ColorVar", label = "Color stuff",
-                        choices = selecttions ,
+                        choices = selections ,
                         selected = "response"
             ),
             # select choises for the alpha scale
             selectInput(inputId = "alpha", label = "alpha",
-                        choices = selecttions,
+                        choices = selections,
                         selected = "response"
             ),
             # select choises for facet
             selectInput(inputId = "facet", label = "facet",
-                        choices = c("none", selecttions ) ,
+                        choices = c("none", selections ) ,
                         selected = "none"),
             # select choises for plot type
             selectInput("plot.type","Plot Type:",
@@ -104,7 +109,9 @@ server <- function(input, output) {
             plot.type<-switch(input$plot.type,
                               "boxplot" 	= Plotting_data %>%
                                   ggplot(mapping = aes_string(x = input$x, y = input$y)) +
-                                  geom_boxplot(aes_string(color = input$ColorVar), alpha=0.5) +
+                                  geom_quasirandom(aes_string(color = input$ColorVar),size = 2) +
+                                  geom_boxplot(aes_string(fill = input$ColorVar),
+                                               alpha = .5, outlier.shape = NA, colour = '#525252') +
                                   theme_bw() ,
 
                               "dotplot" = Plotting_data %>%
@@ -115,7 +122,9 @@ server <- function(input, output) {
             plot.type<-switch(input$plot.type,
                               "boxplot" 	= Plotting_data %>%
                                   ggplot(mapping = aes_string(x = input$x, y = input$y)) +
-                                  geom_boxplot(aes_string(color = input$ColorVar), alpha=0.5) +
+                                  geom_quasirandom(aes_string(color = input$ColorVar),size = 2) +
+                                  geom_boxplot(aes_string(fill = input$ColorVar),
+                                               alpha = .5, outlier.shape = NA, colour = '#525252') +
                                   theme_bw() +
                                   facet_grid(~get(input$facet)),
 

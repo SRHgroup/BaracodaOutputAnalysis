@@ -5,8 +5,8 @@ account: annie-borch
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2275360
-bundleId: 3140474
+bundleId: 3141770
 url: https://annie-borch.shinyapps.io/exploring_data/
-when: 1589350056.4155
+when: 1589373893.59509
 asMultiple: FALSE
 asStatic: FALSE

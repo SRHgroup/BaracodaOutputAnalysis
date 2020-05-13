@@ -127,7 +127,9 @@ server <- function(input, output) {
     plot.type<-switch(input$plot.type,
                       "boxplot" 	= Plotting_data %>%
                         ggplot(mapping = aes_string(x = input$x, y = input$y)) +
-                        geom_boxplot(aes_string(color = input$ColorVar), alpha=0.5) +
+                        geom_quasirandom(aes_string(color = input$ColorVar),size = 2) +
+                        geom_boxplot(aes_string(fill = input$ColorVar),
+                                     alpha = .5, outlier.shape = NA, colour = '#525252') +
                         theme_bw() +
                         facet_grid(~get(input$facet)),
 
