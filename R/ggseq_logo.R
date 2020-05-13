@@ -10,7 +10,9 @@
 seqloggo_generator <-  function(data = my_data_clean_aug ,
                                 len = 9,
                                 resp = c("yes","no"))
-{ p <- my_data_clean_aug %>%
+{ p <- data  %>%
+  group_by(response) %>%
+  distinct(identifier, .keep_all = T) %>%
   filter(str_length(mut_peptide)==len,response==resp) %>%
   select(mut_peptide) %>%
   ggseqlogo()

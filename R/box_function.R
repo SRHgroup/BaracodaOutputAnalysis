@@ -9,7 +9,10 @@
 box_function <- function(data = my_clean_augment_data,
                          x ='response',
                          y= 'mut_mhcrank_el') {
-  p <-  data %>%
+  p <-  data  %>%
+    group_by(response) %>%
+    distinct(identifier, .keep_all = T) %>%
+
     ggplot(mapping = aes_string(x = x, y = y)) +
     geom_quasirandom(aes(color = response),size = 2) +
     geom_boxplot(aes(fill = response),

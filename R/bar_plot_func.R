@@ -7,7 +7,9 @@
 
 bar_plot_func <- function(data = my_data_clean_aug,
                           pep_length = 9) {
-  p <- data %>%
+  p <- data  %>%
+    group_by(response) %>%
+    distinct(identifier, .keep_all = T) %>%
     filter(str_length(mut_peptide)==pep_length,mutation_consequence=="M") %>%
     ggplot(aes(x=peptide_position)) +
     geom_bar(aes(fill = response), stat = "count")+
