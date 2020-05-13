@@ -7,7 +7,7 @@
 #' @export
 
 # GGseq logo function -----------------------------------------------
-seqloggo_generator <-  function(data = my_data_clean_aug ,
+seqloggo_generator <-  function(data = my_clean_augment_data ,
                                 len = 9,
                                 resp = c("yes","no"))
 { p <- data  %>%

@@ -4,7 +4,11 @@
 \alias{seqloggo_generator}
 \title{barcoda response generater}
 \usage{
-seqloggo_generator(data = my_data_clean_aug, len = 9, resp = c("yes", "no"))
+seqloggo_generator(
+  data = my_clean_augment_data,
+  len = 9,
+  resp = c("yes", "no")
+)
 }
 \arguments{
 \item{data}{data to use}

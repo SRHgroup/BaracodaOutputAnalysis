@@ -5,7 +5,7 @@
 #' @param num Length of mut_peptide
 #' @export
 
-bar_plot_func <- function(data = my_data_clean_aug,
+bar_plot_func <- function(data = my_clean_augment_data,
                           pep_length = 9) {
   p <- data  %>%
     group_by(response) %>%

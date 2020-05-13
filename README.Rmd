@@ -42,9 +42,9 @@ library(ggbeeswarm)
 library(knitr)
 ```
 
-# Load data
+## Load data
 
-## Baracoda files
+### Baracoda files
 Baracoda files from experiment must be loaded 
 ```{r}
 path_ct26 <- "test_data/barracoda_output_CT26.xlsx"
@@ -65,7 +65,7 @@ kable(head(all_4t1_barracoda_raw))
 
 ```
 
-## Mupexi files 
+### Mupexi files 
 Load all mupexi files 
 ```{r}
 mupexi_ct26 <- read_xlsx(path = "test_data/ct26_library_mupexi.xlsx") %>% 
@@ -81,26 +81,26 @@ kable(head(mupexi_4t1))
 ```
 
 
-## Sample information file 
+### Sample information file 
 ```{r}
 sample_info <- read_xlsx(path = "test_data/sample_info.xlsx")
 kable(head(sample_info))
 ```
 
 
-## Merge all baracoda files 
+### Merge all baracoda files 
 
 ```{r}
 all_barracoda <- full_join(all_ct26_barracoda_raw, all_4t1_barracoda_raw)
 ```
 
-## Merge mupexi files 
+### Merge mupexi files 
 
 ```{r}
 all_mupexi <- full_join(mupexi_4t1, mupexi_ct26) 
 ```
 
-## Merge data function
+### Merge data function
 Use merge function to merge baracoda and mupexi files the output is my_data 
 
 ```{r}
@@ -110,14 +110,14 @@ my_data <- merge_all_data(barracoda =  all_barracoda,
 
 ```
 
-## Clean data function 
+### Clean data function 
 With clean data function the varribale is cleaned and ready to import in augment_data function 
 
 ```{r}
 my_clean_data <- clean_data(my_data)
 ```
 
-## Augment data 
+### Augment data 
 This Augment function will make new column with esimated frequency from the barracoda screening 
 
 ```{r}
@@ -125,7 +125,10 @@ my_clean_augment_data <- augment_data(my_clean_data)
 ```
 
 
-# Plotting functions 
+## Plotting functions 
+The packages contaions folowing plotting functions 
+
+### barc_resp: Illustrateing responses from baracoda
 Firstly the responses can be explored in the following function, where the cell line and data is selected
 
 ```{r barra_response_plot, width = 25 , height  = 15}
@@ -134,6 +137,7 @@ Firstly the responses can be explored in the following function, where the cell 
   labs(title = "log fold change of CT26-tumor cell line neoepitope screen")
 ```
 
+### scatterplot_function: Making scatter plot from data 
 To look closer to responses and discover the distribution of Imporved Binder (IB) and Conserved Binder (CB), the scatter plot funtion can be used. 
 ```{r scatter_plot, width =10 , height  = 10}
 scatterplot_function(data = my_clean_augment_data,
@@ -144,14 +148,14 @@ scatterplot_function(data = my_clean_augment_data,
        y="WT epitope BA %Rank")
 ```
 
-
+### bar_plot_func: Making bar plot from data 
 To investegate the muations possition in missense mutations the bar plot function is constructed 
 ```{r bar_plot, width =10 , height  = 10}
 bar_plot_func(data = my_clean_augment_data,
                     pep_length = 10)
 ```
 
-
+### box_function: Making boxplot 
 To see wheter the is a diffrence in the responses and non responses to diffrent varraible the box plot function can be used 
 ```{r box_plot, width =10 , height  = 10}
 box_function(data = my_clean_augment_data, 
@@ -163,7 +167,16 @@ box_function(data = my_clean_augment_data,
        color = "Response")
 ```
 
-# Explore data in shiny app 
+
+### seqloggo_generator: Making ggseq logos 
+```{r}
+seqloggo_generator(data = my_clean_augment_data ,
+                   len = 9,
+                   resp = c("yes"))
+```
+
+
+## Explore data in shiny app 
 Tha data can easy be open in a shiny app to explore the responses and the if there is and pattern in the immunugenic neoepitopes in [Shiny_exploring](https://annie-borch.shinyapps.io/exploring_data/)
 Or with the following function in Rstudio.
 ```{r}

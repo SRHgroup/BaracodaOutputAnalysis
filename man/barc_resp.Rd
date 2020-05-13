@@ -4,7 +4,7 @@
 \alias{barc_resp}
 \title{barcoda response generater}
 \usage{
-barc_resp(data, mouse_cell_line)
+barc_resp(data = my_clean_augment_data, mouse_cell_line = "CT26")
 }
 \arguments{
 \item{data}{data to use}

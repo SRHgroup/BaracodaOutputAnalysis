@@ -4,7 +4,7 @@
 \alias{bar_plot_func}
 \title{Bar Plot Function}
 \usage{
-bar_plot_func(data = my_data_clean_aug, pep_length = 9)
+bar_plot_func(data = my_clean_augment_data, pep_length = 9)
 }
 \arguments{
 \item{data}{data to plot}

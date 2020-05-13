@@ -6,7 +6,8 @@
 #' @export
 
 # Baracoda respond function -----------------------------------------------
-barc_resp <- function(data, mouse_cell_line){
+barc_resp <- function(data = my_clean_augment_data,
+                       mouse_cell_line = "CT26"){
 
   p <- data %>% filter(cell_line == mouse_cell_line) %>%
     ggplot(., aes(peptide_name, log_fold_change)) +
