@@ -14,7 +14,7 @@ selecttions <- Plotting_data %>%
     colnames()
 
 ui <- fluidPage(
-    titlePanel("Explore data :) "),
+    titlePanel("Barcc  - exploring data "),
     # checkboxes for log scale
     checkboxInput("logarithmicX", "show x-axis in log10", TRUE),
     checkboxInput("logarithmicY", "show y-axis in log10", TRUE),
