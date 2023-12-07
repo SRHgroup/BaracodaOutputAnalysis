@@ -4,12 +4,12 @@
 \alias{barc_resp}
 \title{barcoda response generater}
 \usage{
-barc_resp(data = my_clean_augment_data, mouse_cell_line = "CT26")
+barc_resp(data = my_barrcoda_data, est_freq = estimated_frequency)
 }
 \arguments{
 \item{data}{data to use}
 
-\item{mouse_cell_line}{select mouse cell line}
+\item{est_freq}{the estimated frequency to use}
 }
 \description{
 This function generates a sequence of logo.
