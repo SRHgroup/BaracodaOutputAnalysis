@@ -5,7 +5,7 @@
 #' @export
 
 # function with clean data
-generate_FU_template_tab <- function(data = my_barrcoda_data, outfile = "data/percent_PE_pt22.xlsx" ) {
+generate_FU_template_tab <- function(data = my_barrcoda_data, outfile = "data/percent_PE.xlsx" ) {
   percent_pe_tab <- data %>%
     group_by(sample) %>%
     tally() %>%
