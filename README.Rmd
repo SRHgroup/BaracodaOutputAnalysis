@@ -100,6 +100,7 @@ my_barrcoda_data <- estimated_frequency(data = my_barrcoda_data, fluochrome_dat 
 my_barrcoda_data %>% select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
 
 ```
+
 # Time for plotting 
 
 ```{r bar_resp figure, out.width = '80%', warning=FALSE}
