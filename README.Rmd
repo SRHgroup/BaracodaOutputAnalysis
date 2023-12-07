@@ -34,13 +34,11 @@ barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is 
 library(tidyverse)
 library(readxl)
 library(openxlsx)
-library(shiny)
 library(ggplot2)
 library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
 library(knitr)
-library(ggseqlogo)
 ```
 
 ## Load data
@@ -48,12 +46,12 @@ library(ggseqlogo)
 ### Baracoda files
 ```{r inputs}
 # name of fold change file
-baracoda_output <- "../data/fold_change_example_file_new.xlsx"
-results_figures_path <- "../results/figures/"
-results_tables_path <- "../results/tabels/"
+baracoda_output <- "test_data/fold_change_example_file_new.xlsx"
+results_figures_path <- "results/figures/"
+results_tables_path <- "results/tabels/"
 
 # if you allready have PE table 
-percent_FU <- "../data/percent_PE_modi.xlsx"
+percent_FU <- "test_data/percent_PE_modi.xlsx"
 # else follow the guidance and run the function "generate_FU_template_tab" after loading data 
 
 ```
@@ -71,7 +69,7 @@ my_barrcoda_data <- load_data(data = baracoda_output)
 generate template
 ```{r add percent flourchrome}
 # iF you want a template run function
-generate_FU_template_tab(data = my_barrcoda_data, outfile = "../data/percent_PE.xlsx")
+generate_FU_template_tab(data = my_barrcoda_data, outfile = "test_data/percent_PE.xlsx")
 
 ```
 
@@ -80,7 +78,7 @@ Then change template with corresponding PE
 generate template
 ```{r add load percent flourchrome}
 # load file
-percent_FU <- "../data/percent_PE_modi.xlsx"
+percent_FU <- "test_data/percent_PE_modi.xlsx"
 FU_data <- read.xlsx(percent_FU)
 head(FU_data)
 ```
