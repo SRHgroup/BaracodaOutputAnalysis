@@ -114,10 +114,10 @@ save_figure(plot = p, name = "response_figure" , width = 18 , height = 8)
 ## Explore data in shiny app 
 Tha data can easy be open in a shiny app to explore the responses and the if there is and pattern in the immunugenic neoepitopes in [Shiny_exploring](https://annie-borch.shinyapps.io/exploring_data/)
 Or with the following function in Rstudio.
-```{r}
-Exploring_data_shiny(Plotting_data = my_clean_augment_data )
-```
-
+# ```{r}
+# Exploring_data_shiny(Plotting_data = my_clean_augment_data )
+# ```
+# 
 
 
 
