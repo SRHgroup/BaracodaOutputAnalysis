@@ -1,7 +1,7 @@
 #' generate_FU_template_tab
 #'
-#' A function to genet´rate teplate for PE precent table "generate_FU_template_tab"
-#' @param my_barracoda_data uploaded dataframe from my barracode data
+#' A function to generate template for PE percent table "generate_FU_template_tab"
+#' @param data uploaded dataframe from my barracode data
 #' @export
 
 # function with clean data

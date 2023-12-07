@@ -6,12 +6,12 @@
 \usage{
 generate_FU_template_tab(
   data = my_barrcoda_data,
-  outfile = "data/percent_PE_pt22.xlsx"
+  outfile = "data/percent_PE.xlsx"
 )
 }
 \arguments{
-\item{my_barracoda_data}{uploaded dataframe from my barracode data}
+\item{data}{uploaded dataframe from my barracode data}
 }
 \description{
-A function to genet´rate teplate for PE precent table "generate_FU_template_tab"
+A function to generate template for PE percent table "generate_FU_template_tab"
 }
