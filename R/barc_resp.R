@@ -1,0 +1,24 @@
+#' barcoda response generater
+#'
+#' This function generates a sequence of logo.
+#' @param data data to use
+#' @param est_freq the estimated frequency to use
+#' @export
+
+# Baracoda respond function -----------------------------------------------
+barc_resp <- function(data = my_barrcoda_data,
+                      est_freq = estimated_frequency){
+  p <- data %>%
+    ggplot(., aes(x = Peptide, y = as.numeric(log_fold_change) )) +
+    geom_point(aes_string(color = 'response', size = est_freq )) +
+    geom_text_repel(data=subset(data, response=="yes"),
+                    aes(label=Sequence)) +
+    facet_grid(.~HLA)+
+    theme_bw() +
+    labs(y = "log_fold_change", x = "") +
+    scale_y_log10() +
+    theme_bw()
+  return(p)
+}
+
+
