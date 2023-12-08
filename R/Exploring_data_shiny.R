@@ -7,30 +7,18 @@
 
 # The app is en Beta version
 # The app is only for exploring data
-Exploring_data_shiny <- function(Plotting_data = my_clean_augment_data ) {
+Exploring_data_shiny <- function(Plotting_data = my_barrcoda_data ) {
 # Define UI for application
   Plotting_data <- Plotting_data %>%
-    # convert Mut_MHCrank_EL and Expression level to numeric so we can join both files
-    mutate(mut_mhcrank_el = as.numeric(mut_mhcrank_el),
-           mut_mhcrank_ba = as.numeric(mut_mhcrank_ba),
-           expression_level = as.numeric(expression_level),
-           norm_mhcrank_el = as.numeric(norm_mhcrank_el),
-           norm_mhcrank_ba = as.numeric(norm_mhcrank_ba),
-           self_similarity = as.numeric(self_similarity)) %>%
     arrange(response) %>%
     group_by(response) %>%
     distinct(identifier, .keep_all = T)
 
   selections <- Plotting_data %>%
-    select(response,expression_level,mut_mhcrank_el,norm_mhcrank_el,
-           norm_mhcrank_ba, mut_mhcrank_ba, self_similarity,
-            hla,mutation_consequence,cell_line,
-            treatment,estimated_frequency_norm) %>%
     colnames()
 ui <- fluidPage(
-  titlePanel("Barcc  - exploring data"),
+  titlePanel("BaracodaOutputAnalysis  - exploring data"),
   # checkboxes for log scale
-  checkboxInput("logarithmicX", "show x-axis in log10", FALSE),
   checkboxInput("logarithmicY", "show y-axis in log10", FALSE),
 
   # check boxes for plotting with ONLY responses
@@ -43,17 +31,13 @@ ui <- fluidPage(
       # Select choices to put in the x-axis
       selectInput(inputId = "x", label = "X-axis:",
                   choices = selections ,
-                  selected = "mut_mhcrank_el"
+                  selected = "Paptide"
       ),
-      # Select choices to put in the y-axis
-      selectInput(inputId = "y", label = "Y-axis:",
-                  choices = selections,
-                  selected = "norm_mhcrank_el"
                   ),
       # Select choices to put in the x-axis
       selectInput(inputId = "size", label = "size:",
                   choices = selections ,
-                  selected = "estimated_frequency_norm"
+                  selected = "estimated_frequency"
       ),
 
       # select choices to color stuff

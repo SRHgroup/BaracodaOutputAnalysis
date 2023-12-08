@@ -16,19 +16,19 @@ input is in progress.
 ``` r
 # install.packages("devtools")
 library(devtools)
-devtools::install_github("SRHgroup/barcc")
-library(barcc)
+devtools::install_github("SRHgroup/BaracodaOutputAnalysis", force = T)
+library(BaracodaOutputAnalysis)
 ```
 
-barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)
-and is required for running. \#\# required packages
+BaracodaOutputAnalysis is built with
+[tidyverse](https://github.com/tidyverse/tidyverse) and is required for
+running. \## required packages
 
 ``` r
 library(tidyverse)
 library(readxl)
 library(openxlsx)
 library(ggplot2)
-library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
 library(knitr)
@@ -41,6 +41,8 @@ library(knitr)
 ``` r
 # name of fold change file
 baracoda_output <- "test_data/fold_change_example_file_new.xlsx"
+
+# output directory
 results_figures_path <- "results/figures/"
 results_tables_path <- "results/tabels/"
 
@@ -56,7 +58,7 @@ Load data
 ``` r
 
 # load data
-my_barrcoda_data <- load_data(data = baracoda_output)
+my_barrcoda_data <- BaracodaOutputAnalysis::load_data(data = baracoda_output)
 ```
 
 ## Add percent flourchrome information
@@ -65,7 +67,7 @@ generate template
 
 ``` r
 # iF you want a template run function
-generate_FU_template_tab(data = my_barrcoda_data, outfile = "test_data/percent_PE.xlsx")
+BaracodaOutputAnalysis::generate_FU_template_tab(data = my_barrcoda_data, outfile = "test_data/percent_PE.xlsx")
 ```
 
 Then change template with corresponding PE generate template
@@ -88,7 +90,7 @@ head(FU_data)
 Add column with reponses
 
 ``` r
-my_barrcoda_data <- add_response_by_threshold(data = my_barrcoda_data,
+my_barrcoda_data <- BaracodaOutputAnalysis::add_response_by_threshold(data = my_barrcoda_data,
          FC = 2, p_val = 0.001)
 my_barrcoda_data %>% group_by(sample,response) %>% tally()
 #> # A tibble: 10 × 3
@@ -110,9 +112,10 @@ my_barrcoda_data %>% group_by(sample,response) %>% tally()
 Add estimated frequency and normalized estimated frequency
 
 ``` r
-my_barrcoda_data <- estimated_frequency(data = my_barrcoda_data, fluochrome_dat = percent_FU)
+my_barrcoda_data <- BaracodaOutputAnalysis::estimated_frequency(data = my_barrcoda_data, fluochrome_dat = percent_FU)
 
-my_barrcoda_data %>% select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
+my_barrcoda_data %>% 
+  select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
 #> # A tibble: 7,853 × 5
 #> # Groups:   sample [5]
 #>    sample Peptide        HLA   estimated_frequency estimated_frequency_normali…¹
@@ -136,7 +139,7 @@ my_barrcoda_data %>% select(sample,Peptide,HLA,estimated_frequency, estimated_fr
 Overall responses
 
 ``` r
-p <- barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
+p <- BaracodaOutputAnalysis::barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
 p
 ```
 
