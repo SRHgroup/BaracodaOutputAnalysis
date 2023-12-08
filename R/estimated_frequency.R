@@ -1,6 +1,6 @@
 #' estimated_frequency
 #'
-#' A function to calculate "estimated_frequency "
+#' A function to calculate "estimated_frequency" and "estimated_frequency_normalised_responses"
 #' @param my_baracoda_data barrcoda loaded data
 #' @param fluochrome_dat the importet percent flouchrome
 #' @export
