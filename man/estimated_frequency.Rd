@@ -12,5 +12,5 @@ estimated_frequency(data = my_barrcoda_data, fluochrome_dat = percent_FU)
 \item{my_baracoda_data}{barrcoda loaded data}
 }
 \description{
-A function to calculate "estimated_frequency "
+A function to calculate "estimated_frequency" and "estimated_frequency_normalised_responses"
 }

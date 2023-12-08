@@ -22,20 +22,19 @@ The packges will take pre-processed copy of raw baracoda files and calculate est
 The packges will take pre-processed copy of raw baracoda files and mupexi files and illustrate the characteristics of the immunugenic neopeptides. 
 The packgaes works only with murine data, The human data input is in progress. 
 
-```{r, eval = F}
+```{r, eval = F, warning=FALSE}
 # install.packages("devtools")
 library(devtools)
-devtools::install_github("SRHgroup/barcc")
-library(barcc)
+devtools::install_github("SRHgroup/BaracodaOutputAnalysis")
+library(BaracodaOutputAnalysis)
 ```
-barcc is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running.
+BaracodaOutputAnalysis is built with [tidyverse](https://github.com/tidyverse/tidyverse)  and is required for running.
 ## required packages 
 ```{r}
 library(tidyverse)
 library(readxl)
 library(openxlsx)
 library(ggplot2)
-library(barcc)
 library(ggrepel)
 library(ggbeeswarm)
 library(knitr)
@@ -47,6 +46,8 @@ library(knitr)
 ```{r inputs}
 # name of fold change file
 baracoda_output <- "test_data/fold_change_example_file_new.xlsx"
+
+# output directory
 results_figures_path <- "results/figures/"
 results_tables_path <- "results/tabels/"
 
@@ -97,7 +98,8 @@ Add estimated frequency and normalized estimated frequency
 ```{r add estimated frequency}
 my_barrcoda_data <- estimated_frequency(data = my_barrcoda_data, fluochrome_dat = percent_FU)
 
-my_barrcoda_data %>% select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
+my_barrcoda_data %>% 
+  select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
 
 ```
 
