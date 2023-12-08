@@ -1,10 +1,10 @@
 Package: BaracodaOutputAnalysis
 Type: Package
-Title: Illustrationg results from baracoda screnning combined with mupexi data 
+Title: Illustrationg results from baracoda screnning combined with calculation of estimated frequency 
 Version: 0.1.0
-Author: Wellace, Bokai, Annie and Sara 
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: The packages takes murine mupexi data and barracoda data as input.Help pre-procces and explore data with a shiny app
+Author: Annie Borch
+Maintainer: The package maintainer <annbor@dtu.dk>
+Description: The packages takes barracoda data as input.
 License: TBA
 Encoding: UTF-8
 LazyData: true
