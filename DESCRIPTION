@@ -1,4 +1,4 @@
-Package: barcc
+Package: BaracodaOutputAnalysis
 Type: Package
 Title: Illustrationg results from baracoda screnning combined with mupexi data 
 Version: 0.1.0
