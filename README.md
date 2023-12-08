@@ -1,4 +1,4 @@
-barcc
+Baracoda Output Analysis
 ================
 
 <!-- README.md is generated from the README.Rmd file. Edit that file for updates -->
@@ -133,6 +133,8 @@ my_barrcoda_data %>% select(sample,Peptide,HLA,estimated_frequency, estimated_fr
 
 # Time for plotting
 
+Overall responses
+
 ``` r
 p <- barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
 p
@@ -141,13 +143,13 @@ p
 <img src="README-bar_resp figure-1.png" width="80%" />
 
 ``` r
-save_figure(plot = p, name = "response_figure" , width = 18 , height = 8)
+#save_figure(plot = p, name = "response_figure" , width = 18 , height = 8)
 ```
 
-## Explore data in shiny app
+Write output table
 
-Tha data can easy be open in a shiny app to explore the responses and
-the if there is and pattern in the immunugenic neoepitopes in
-[Shiny\_exploring](https://annie-borch.shinyapps.io/exploring_data/) Or
-with the following function in Rstudio. \# `{r} #
-Exploring_data_shiny(Plotting_data = my_clean_augment_data ) #` \#
+``` r
+write.table(my_barrcoda_data, file = "results/tabels/barracoda_output_final.tsv", sep = "\t", quote = F, row.names = F)
+```
+
+# done

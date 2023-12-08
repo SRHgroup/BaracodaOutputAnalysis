@@ -106,12 +106,12 @@ Overall responses
 ```{r bar_resp figure, out.width = '80%', warning=FALSE}
 p <- barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
 p
-save_figure(plot = p, name = "response_figure" , width = 18 , height = 8)
+#save_figure(plot = p, name = "response_figure" , width = 18 , height = 8)
 ```
 
 
 Write output table 
-```{r bar_resp figure, out.width = '80%', warning=FALSE}
+```{r write table,warning=FALSE}
 write.table(my_barrcoda_data, file = "results/tabels/barracoda_output_final.tsv", sep = "\t", quote = F, row.names = F)
 
 ```
