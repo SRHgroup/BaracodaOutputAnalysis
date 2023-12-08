@@ -17,7 +17,8 @@ barc_resp <- function(data = my_barrcoda_data,
     theme_bw() +
     labs(y = "log_fold_change", x = "") +
     scale_y_log10() +
-    theme_bw()
+    theme_bw() +
+    theme(legend.position = "bottom")
   return(p)
 }
 
