@@ -62,7 +62,7 @@ Load data
 ```{r load data}
 
 # load data
-my_barrcoda_data <- BaracodaOutputAnalysis::load_data(data = baracoda_output)
+my_barrcoda_data <- load_data(data = baracoda_output)
 ```
 
 
