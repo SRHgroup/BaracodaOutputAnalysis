@@ -76,6 +76,10 @@ Then change template with corresponding PE generate template
 # load file
 percent_FU <- "test_data/percent_PE_modi.xlsx"
 FU_data <- read.xlsx(percent_FU)
+```
+
+``` r
+# load file
 head(FU_data)
 #>   sample percent_pe
 #> 1   1849        1.0
@@ -87,11 +91,29 @@ head(FU_data)
 
 ## responses and estimated frequency
 
-Add column with reponses
+Add column with response
 
 ``` r
 my_barrcoda_data <- BaracodaOutputAnalysis::add_response_by_threshold(data = my_barrcoda_data,
          FC = 2, p_val = 0.001)
+my_barrcoda_data %>% group_by(sample,response) %>% tally()
+#> # A tibble: 10 × 3
+#> # Groups:   sample [5]
+#>    sample response     n
+#>     <dbl> <chr>    <int>
+#>  1   1849 no        1362
+#>  2   1849 yes         87
+#>  3   2389 no        1858
+#>  4   2389 yes         50
+#>  5   7577 no        1025
+#>  6   7577 yes         45
+#>  7   7729 no        1204
+#>  8   7729 yes         86
+#>  9   9517 no        2001
+#> 10   9517 yes        135
+```
+
+``` r
 my_barrcoda_data %>% group_by(sample,response) %>% tally()
 #> # A tibble: 10 × 3
 #> # Groups:   sample [5]
@@ -134,12 +156,36 @@ my_barrcoda_data %>%
 #> # ℹ abbreviated name: ¹​estimated_frequency_normalised_responses
 ```
 
+``` r
+my_barrcoda_data %>% 
+  select(sample,Peptide,HLA,estimated_frequency, estimated_frequency_normalised_responses)
+#> # A tibble: 7,853 × 5
+#> # Groups:   sample [5]
+#>    sample Peptide        HLA   estimated_frequency estimated_frequency_normali…¹
+#>     <dbl> <chr>          <chr>               <dbl>                         <dbl>
+#>  1   1849 CMV pp65 YSE   A0101            0.0513                        0.0170  
+#>  2   1849 CMV pp50 VTE   A0101            0.0365                        0.0121  
+#>  3   1849 Patient1849_18 A0101            0.00344                       0.00114 
+#>  4   1849 Patient1849_15 A0101            0.00283                       0.000939
+#>  5   1849 Patient1849_1  A0101            0.00420                       0.00139 
+#>  6   1849 Patient1849_28 A0101            0.00131                       0.000436
+#>  7   1849 Patient1849_19 A0101            0.00189                       0.000627
+#>  8   1849 Patient1849_13 A0101            0.00113                       0.000375
+#>  9   1849 Patient1849_14 A0101            0.00110                       0.000366
+#> 10   1849 Patient1849_27 A0101            0.000931                      0.000309
+#> # ℹ 7,843 more rows
+#> # ℹ abbreviated name: ¹​estimated_frequency_normalised_responses
+```
+
 # Time for plotting
 
 Overall responses
 
 ``` r
 p <- BaracodaOutputAnalysis::barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
+```
+
+``` r
 p
 ```
 

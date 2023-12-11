@@ -15,7 +15,7 @@ barc_resp <- function(data = my_barrcoda_data,
                     aes(label=Sequence)) +
     facet_grid(.~HLA)+
     theme_bw() +
-    labs(y = "log_fold_change", x = "") +
+    labs(y = "log fold change", x = "", size = "estimated frequency") +
     scale_y_log10() +
     theme_bw() +
     theme(legend.position = "bottom")
