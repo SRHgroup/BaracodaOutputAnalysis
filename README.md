@@ -148,7 +148,7 @@ my_barrcoda_data %>%
 Overall responses
 
 ``` r
-p <- BaracodaOutputAnalysis::barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency_normalised_responses')
+p <- BaracodaOutputAnalysis::barc_resp(data = my_barrcoda_data, est_freq = 'estimated_frequency')
 ```
 
 ``` r

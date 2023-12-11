@@ -13,9 +13,8 @@ estimated_frequency <- function(data = my_barrcoda_data, fluochrome_dat = percen
     group_by(sample) %>%
     mutate(count.1 = as.numeric(count.1)) %>%
     mutate(sum_count = sum(count.1, na.rm = T)) %>%
-    mutate(percent_count_fraction = (count.1/sum_count)*100) %>%
-    mutate(percent_count_fraction_normalised_response = (count.1/sum_count_responses)*100) %>%
-    mutate(estimated_frequency = percent_pe*percent_count_fraction/100)  %>%
-    mutate(estimated_frequency_normalised_responses = percent_pe*percent_count_fraction_normalised_response/100)
+    mutate(percent_count_fraction_response = (count.1/sum_count_responses)*100) %>%
+    mutate(estimated_frequency = case_when(response=="yes" ~ (percent_pe*percent_count_fraction_response/100),
+                                           response=="no" ~ "NA"))
   return(barrcoda_data)
 }
