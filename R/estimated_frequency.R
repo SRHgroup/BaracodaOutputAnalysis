@@ -6,8 +6,13 @@
 #' @export
 
 estimated_frequency <- function(data = my_barrcoda_data, fluochrome_dat = percent_FU) {
-  sum_count_responses =  data %>% filter(response == "yes") %>% select(count.1) %>% sum(., na.rm = T)
-  barrcoda_data <- left_join(data, FU_data)
+  sum_count <- data %>%
+    filter(response == "yes") %>%
+    group_by(sample) %>%
+    summarise(sum_count_responses = sum(count.1, na.rm = T))
+
+barrcoda_data <- left_join(data, FU_data)
+barrcoda_data <- left_join(barrcoda_data, sum_count)
 
   barrcoda_data <- barrcoda_data %>%
     group_by(sample) %>%
