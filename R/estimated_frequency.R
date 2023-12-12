@@ -20,6 +20,6 @@ barrcoda_data <- left_join(barrcoda_data, sum_count)
     mutate(sum_count = sum(count.1, na.rm = T)) %>%
     mutate(percent_count_fraction_response = (count.1/sum_count_responses)*100) %>%
     mutate(estimated_frequency = case_when(response=="yes" ~ (percent_pe*percent_count_fraction_response/100),
-                                           response=="no" ~ "NA"))
+                                           response=="no" ~ NA))
   return(barrcoda_data)
 }
