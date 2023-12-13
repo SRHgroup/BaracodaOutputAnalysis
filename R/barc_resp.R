@@ -11,6 +11,8 @@ barc_resp <- function(data = my_barrcoda_data,
   p <- data %>%
     ggplot(., aes(x = Peptide, y = as.numeric(log_fold_change) )) +
     geom_point(aes_string(color = 'response', size = est_freq )) +
+    geom_point(data=subset(data, !is.na(estimated_frequency)), aes_string(color = 'response', size = est_freq )) +
+    geom_point(data=subset(data, is.na(estimated_frequency)),aes_string(color = 'response'), size=0.01) +
     geom_text_repel(data=subset(data, response=="yes"),
                     aes(label=Sequence)) +
     facet_grid(.~HLA)+
